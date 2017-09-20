@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.box{
+		width: 100px;
+		height: 100px;
+		background: blue;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+</style>
+<body>
+	<div class="box"></div>
+</body>
+</html>
+<script>
+	let box=document.getElementsByClassName('box')[0];
+	let speed=10;
+	let t=setInterval(move,60);
+	let grow=window.innerHeight-box.offsetHeight;
+	let grow1=window.innerWidth-box.offsetWidth;
+	function move(){
+		if(box.offsetTop>=grow){
+			speed*=-1;
+		}
+		if(box.offsetLeft<0){
+			box.offsetLeft=0;
+			speed*=-1;
+		}
+		box.style.top=`${box.offsetTop+speed}px`;
+		box.style.left=`${box.offsetLeft+(grow1/grow)*speed}px`;
+	}
+</script>
